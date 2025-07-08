@@ -45,7 +45,7 @@ public class PedidoServiceImpl implements PedidoService {
             .map(a -> articuloRepository.findById(a.getId()).orElseThrow(
                 () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Artículo con ID " + a.getId() + " no encontrado")))
             .toList();
-
+        pedido.setDniCliente(usuario.getDni());
         pedido.setArticulos(articulosPersistidos);
         pedido.setUsuario(usuario);
 
@@ -79,16 +79,16 @@ public class PedidoServiceImpl implements PedidoService {
         return pedidoRepository.save(pedido);
     }
 
-    public void eliminarPedido(Long id) {
-        Usuario usuario = getUsuario();
-        pedidoRepository.deleteById(id);
+    public void eliminarPedido(Long id) {                
+        Usuario usuario = getUsuario();        
         Pedido pedido = pedidoRepository.findById(id)
             .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Pedido no encontrado"));
-
+        
         // Validar que el pedido pertenezca al usuario
         if (!pedido.getUsuario().getId().equals(usuario.getId())) {
             throw new ResponseStatusException(HttpStatus.FORBIDDEN, "No tenés permiso para eliminar este pedido");
         }
+        pedidoRepository.deleteById(id);
     }
 
 }
