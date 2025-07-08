@@ -1,0 +1,118 @@
+{
+	"info": {
+		"_postman_id": "5a032397-8243-49a2-9ba6-dff269369da1",
+		"name": "Articulos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "46502674"
+	},
+	"item": [
+		{
+			"name": "Get articulo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/articulos",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"articulos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post articulo",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJuQG4uY29tIiwicm9sIjoiQURNSU4iLCJpYXQiOjE3NTE5NTM1MDMsImV4cCI6MTc1MTk1NzEwM30.XxlyL3Hy7cWKSkR8GzJV6Ra6qeNSaRe_LlvqA6WRRyeiUxQP6y2nTZ23hB-Glqwg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\":\"Articulo\",\r\n    \"precio\":\"55\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/articulos",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"articulos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put Articulo",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJuQG4uY29tIiwicm9sIjoiQURNSU4iLCJpYXQiOjE3NTE5NTM1MDMsImV4cCI6MTc1MTk1NzEwM30.XxlyL3Hy7cWKSkR8GzJV6Ra6qeNSaRe_LlvqA6WRRyeiUxQP6y2nTZ23hB-Glqwg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\":\"Articulo editado\",\r\n    \"precio\":\"65\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/articulos/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"articulos",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
