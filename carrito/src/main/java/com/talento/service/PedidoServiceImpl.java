@@ -59,16 +59,15 @@ public class PedidoServiceImpl implements PedidoService {
         return usuario;
     }
 
-    public Pedido actualizarPedido(Long id, Pedido pedido) {
+    public Pedido actualizarPedido(Long id, Pedido pedido) {        
         Usuario usuario = getUsuario();
         Pedido pedidoExistente = pedidoRepository.findById(id)
         .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Pedido no encontrado"));
-
+        
         // Verificar que el pedido pertenezca al usuario autenticado
         if (!pedidoExistente.getUsuario().getId().equals(usuario.getId())) {
             throw new ResponseStatusException(HttpStatus.FORBIDDEN, "No tenés permiso para modificar este pedido");
-        }
-
+        }        
         List<Articulo> articulosPersistidos = pedido.getArticulos().stream()
             .map(a -> articuloRepository.findById(a.getId()).orElseThrow(() ->
                 new ResponseStatusException(HttpStatus.NOT_FOUND, "Artículo con ID " + a.getId() + " no encontrado")))
